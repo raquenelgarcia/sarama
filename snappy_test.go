@@ -19,7 +19,7 @@ var snappyStreamTestCases = map[string][]byte{
 
 func TestSnappyEncode(t *testing.T) {
 	for src, exp := range snappyTestCases {
-		dst, err := snappyEncode([]byte(src))
+		dst, err := SnappyEncode([]byte(src))
 		if err != nil {
 			t.Error("Encoding error: ", err)
 		} else if !bytes.Equal(dst, exp) {
@@ -30,7 +30,7 @@ func TestSnappyEncode(t *testing.T) {
 
 func TestSnappyDecode(t *testing.T) {
 	for exp, src := range snappyTestCases {
-		dst, err := snappyDecode(src)
+		dst, err := SnappyDecode(src)
 		if err != nil {
 			t.Error("Encoding error: ", err)
 		} else if !bytes.Equal(dst, []byte(exp)) {
@@ -41,7 +41,7 @@ func TestSnappyDecode(t *testing.T) {
 
 func TestSnappyDecodeStreams(t *testing.T) {
 	for exp, src := range snappyStreamTestCases {
-		dst, err := snappyDecode(src)
+		dst, err := SnappyDecode(src)
 		if err != nil {
 			t.Error("Encoding error: ", err)
 		} else if !bytes.Equal(dst, []byte(exp)) {
